@@ -1,8 +1,5 @@
 ---
 - hosts: jenkins
   become: yes
-  #pre_tasks:
-  #- name: Atualizando o repo
-    #raw: 'apt update -y && apt upgrade -y && apt install ca-certificates -y && apt install epel-release -y && apt fontconfig openjdk-17-jre'
   roles:
     - { role: install-jenkins, tags: ["Install_jenkins_role"] }
