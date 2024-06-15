@@ -1,2 +1,4 @@
 ---
 # vars file for install-jenkins
+URL_JENKINS: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+URL_PACKAGE: https://pkg.jenkins.io/debian-stable

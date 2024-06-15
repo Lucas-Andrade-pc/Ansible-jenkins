@@ -10,11 +10,11 @@
 
 - name: Download Jenkins GPG key
   get_url:
-    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    url: "{{ URL_JENKINS }}"
     dest: /usr/share/keyrings/jenkins-keyring.asc
 
 - name: Add package in repo source.list
-  shell: sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  shell: sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] "{{ URL_PACKAGE }}" binary/ > /etc/apt/sources.list.d/jenkins.list'
 
 - name: Apt update
   apt:
