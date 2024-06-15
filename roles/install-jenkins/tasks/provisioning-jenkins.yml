@@ -1,0 +1,34 @@
+- name: Install requirements
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: 
+    - ca-certificates
+    - fontconfig
+    - openjdk-17-jre
+
+- name: Download Jenkins GPG key
+  get_url:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    dest: /usr/share/keyrings/jenkins-keyring.asc
+
+- name: Add package in repo source.list
+  shell: sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+- name: Apt update
+  apt:
+    name: jenkins
+    state: present
+    update_cache: yes
+
+- name: Att configuration
+  service:
+    daemon_reload: true
+
+- name: start service jenkins
+  service:
+    name: jenkins
+    state: started
+  
+  

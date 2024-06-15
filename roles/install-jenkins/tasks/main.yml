@@ -1,0 +1,3 @@
+---
+# tasks file for install-jenkins
+- ansible.builtin.include_tasks: provisioning-jenkins.yml
